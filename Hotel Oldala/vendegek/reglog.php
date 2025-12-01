@@ -7,11 +7,29 @@ if(isset($_POST['log-btn'])){
 
 }
 if(isset($_POST['reg-btn'])){
-    $_POST['email']= $email;
-    $_POST['pass1'] = $password1;
-    $_POST['pass2'] = $password2;
-}
+		
+		$lekerdezes = "SELECT * FROM users WHERE email='$_POST[email]'";
+		$talalt_fiok = $conn->query($lekerdezes);
+		
+		if(mysqli_num_rows($talalt_fiok) == 0){
+			
+			if($_POST['pass1'] == $_POST['pass2']){
+				
+				$titkos = password_hash($_POST['pass1'], PASSWORD_DEFAULT);
+				
+				$conn->query("INSERT INTO users VALUES(id, '$_POST[email]', '$_POST[username]', '$titkos', 0)");
+				
+				$lekerdezes = "SELECT * FROM users WHERE email='$_POST[email]'";
+				$talalt_fiok = $conn->query($lekerdezes);
+				$felhasznalo = $talalt_fiok->fetch_assoc();
+
+				setcookie("id", $felhasznalo['id'], time() + 3600, "/");
+			}
+	}
+    } 
+
 ?>
+
 <!DOCTYPE html>
 <html lang="hu">
 <head>
