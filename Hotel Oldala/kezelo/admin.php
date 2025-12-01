@@ -6,6 +6,9 @@ if(isset($_POST['add-btn'])){
     $price = $_POST['price'];
     $conn->query("INSERT INTO rooms VALUES('','$room_number', '$price')");
 }
+if(isset($_POST["del-btn"])){
+    
+}
 
 ?>
 
@@ -18,13 +21,17 @@ if(isset($_POST['add-btn'])){
 </head>
 <body>
     <h1>Üdvözlünk xy Admin</h1>
-
+    <input type="text" id="serach-input" placeholder="Keresés...">
+    <br></br>
     <?php
     $lekerdezes = "SELECT * FROM rooms";
     $talalt_sorok = $conn->query($lekerdezes);
     while($sor  = $talalt_sorok->fetch_assoc()){
-        echo "<a href=>".$sor['room_number']."</p>";
+        echo "<a href=>".$sor['room_number']."</p>"."</a>";
         echo "<p>".$sor['price']."FT"."</p>";
+        echo "<form>";
+        echo "<input type='submit' value='torles' name='del-btn'>";
+        echo "</form>";
     } 
     ?>
     <form method="post">
@@ -36,5 +43,14 @@ if(isset($_POST['add-btn'])){
         <br>
         <input type="submit" value="Hozzáadás" name="add-btn">
     </form>
+ 
 </body>
+<script>
+    document.querySelector('#search-input').
+    addEventListener('input', filterlist)
+
+    function(){
+        const searchInput = document.querySelector ('#search-input')
+    }
+</script>
 </html>
