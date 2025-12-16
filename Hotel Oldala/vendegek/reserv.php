@@ -2,7 +2,7 @@
 require '../../cfg.php';
 //get-tel majd le kerem az adott szoba dolgait.
 if(!isset($_COOKIE['id'])){
-    !scriptalert hogy kerlek jelentkezz be a kedvezmenyekert
+    echo "<script>alert('Kerlek Jelentkezz be')</script>";
     
 }
 else{
