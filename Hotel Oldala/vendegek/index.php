@@ -17,8 +17,9 @@ require '../../cfg.php';
     <nav>
         <ul>
             <li><a href="index.php">Főoldal</li>
-            <li><a href="feoglalas.php">Foglalás</li>
+            <li><a href="reserv.php">Foglalás</li>
              <li><a href="reglog.php">Bejelentkezes</li>
+             <li><a href="logout.php">Kijelenetkezés</li>
         </ul>
     </nav>
 
